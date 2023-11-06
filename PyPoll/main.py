@@ -1,19 +1,23 @@
 import csv
 import os
 
+# Read budget_data.csv file - Assume we dont know Pandas yet
 election_data = os.path.join("Resources", "election_data.csv")
 
+# open CSV file
 with open(election_data, 'r') as csvfile:
     csvreader = csv.reader(csvfile, delimiter = ',')
 
     # first line is header - remove first row from analysis
     header = next(csvreader)
 
+    # Create all necessary varaible for result
     total = 0
     count_Charles = 0
     count_Diana = 0
     count_Raymon = 0
 
+    # count total votes and individual's total
     for row in csvreader:
         total += 1
         if row[2] == "Charles Casper Stockham":
@@ -25,8 +29,8 @@ with open(election_data, 'r') as csvfile:
         else:
             pass
     
-    # ref: https://www.geeksforgeeks.org/python-get-key-with-maximum-value-in-dictionary/
-    vote_dict = {"Charles Casper Stockham":count_Charles,
+# create dictionary for result later
+vote_dict = {"Charles Casper Stockham":count_Charles,
                  "Diana DeGette":count_Diana,
                  "Raymon Anthony Doane":count_Raymon}
 
@@ -45,11 +49,9 @@ print("-------------------------------------------")
 print(f"Winner: {result}")
 print("-------------------------------------------")
 
-# ref https://www.pythontutorial.net/python-basics/python-write-text-file/
-
 text_file = os.path.join('Analysis', 'output.txt')
 
-"output to text file"
+# output to text file
 with open(text_file,'w') as text:
     text.write("Election Results\n")
     text.write("-------------------------------------------\n")

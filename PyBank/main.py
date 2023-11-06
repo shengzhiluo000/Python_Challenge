@@ -45,9 +45,9 @@ with open(budget_data_csv, 'r') as csvfile:
             pass
 
 # calculate for average change
-Average_Change = sum(budgetChange)/len(budgetChange)
+Average_Change = round(sum(budgetChange)/len(budgetChange), 2)
 
-# Output:
+# Test:
 print("Financial Analysis")
 print("-------------------------------------------")
 print(f"Total Months: {total_month}")
@@ -58,7 +58,7 @@ print(f"Greatest Decrease in Profits: {WorstProfitMonth} ({WorstProfit})")
 
 text_file = os.path.join('Analysis', 'output.txt')
 
-"output to text file"
+# output to text file
 with open(text_file,'w') as text:
     text.write("Financial Analysis\n")
     text.write("-------------------------------------------\n")
